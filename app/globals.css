@@ -1,0 +1,145 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #12332C;
+  --foreground: #F3EFE5;
+
+  /* Semantic Design System Tokens (Warm Forest Palette) */
+  --color-primary: #142921;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F5F4F0;
+  --color-border: #E6E4DF;
+  --color-text-primary: #142921;
+  --color-text-body: #3A4742;
+  --color-text-muted: #66746E;
+  --color-accent: #0D1C16;
+
+  /* Backward-compatible aliases */
+  --color-corp-dark: var(--color-primary);
+  --color-corp-light: var(--color-surface-subtle);
+  --color-corp-border: var(--color-border);
+  --color-corp-muted: var(--color-text-muted);
+  --color-corp-gray: var(--color-text-body);
+  --color-corp-accent: var(--color-accent);
+}
+
+html[data-locale="bn"] {
+  --font-heading-var: var(--font-noto-serif-bengali), serif;
+  --font-body-var: var(--font-anek-bangla), sans-serif;
+}
+
+html[data-locale="en"] {
+  --font-heading-var: var(--font-manrope), sans-serif;
+  --font-body-var: var(--font-inter), sans-serif;
+}
+
+/* Default fallback just in case */
+html {
+  --font-heading-var: var(--font-manrope), sans-serif;
+  --font-body-var: var(--font-inter), sans-serif;
+}
+
+/* On-the-fly Clarity City overrides for English Landing Pages */
+html[data-locale="en"] .landing-scope {
+  --font-heading-var: "Clarity City", var(--font-manrope), sans-serif;
+  --font-body-var: "Clarity City", var(--font-inter), sans-serif;
+  font-family: var(--font-body);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-brand-emerald: #12332C;
+  --color-brand-jade: #1E4E44;
+  --color-brand-gold: #C5A46D;
+  --color-brand-ivory: #F3EFE5;
+  --color-brand-white: #FFFFFF;
+
+  /* Semantic Tokens */
+  --color-primary: var(--color-primary);
+  --color-surface: var(--color-surface);
+  --color-surface-subtle: var(--color-surface-subtle);
+  --color-border: var(--color-border);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-body: var(--color-text-body);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+
+  /* Backward-compatible Corp Tokens */
+  --color-corp-dark: var(--color-corp-dark);
+  --color-corp-light: var(--color-corp-light);
+  --color-corp-border: var(--color-corp-border);
+  --color-corp-muted: var(--color-corp-muted);
+  --color-corp-gray: var(--color-corp-gray);
+  --color-corp-accent: var(--color-corp-accent);
+
+  --font-heading: var(--font-heading-var);
+  --font-body: var(--font-body-var);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Bengali specific typography adjustments */
+html[data-locale="bn"] h1, 
+html[data-locale="bn"] h2, 
+html[data-locale="bn"] h3 {
+  line-height: 1.45 !important;
+  padding-bottom: 0.1em;
+}
+
+html[data-locale="bn"] p {
+  line-height: 1.7 !important;
+}
+
+/* Ensure font weight isn't artificially bolded causing blur on conjuncts */
+html[data-locale="bn"] .font-bold {
+  font-weight: 600 !important;
+}

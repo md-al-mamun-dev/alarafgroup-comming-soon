@@ -1,0 +1,89 @@
+{
+  "Header": {
+    "businesses": "Businesses",
+    "contact": "Contact",
+    "switchLanguage": "বাংলা"
+  },
+  "Hero": {
+    "comingSoon": "COMING SOON",
+    "brand": "AL Araf Group",
+    "title": "Built on Trust.<br></br>Driven by Possibility.",
+    "description": "Bringing apparel sourcing, travel services, and new business opportunities together through one shared vision. Our new website is coming soon.",
+    "primaryCta": "Explore Our Businesses",
+    "secondaryCta": "Get in Touch"
+  },
+  "Values": {
+    "title": "A Shared Vision",
+    "description": "AL Araf Group brings varied commercial interests together through a cohesive vision. Our approach to every endeavor is guided by a commitment to lasting quality and mutual respect.",
+    "items": {
+      "integrity": {
+        "title": "Integrity",
+        "description": "Building relationships through trust and responsible business practices."
+      },
+      "connections": {
+        "title": "Connections",
+        "description": "Bringing people, services, and opportunities together."
+      },
+      "progress": {
+        "title": "Progress",
+        "description": "Exploring new possibilities while respecting enduring values."
+      }
+    }
+  },
+  "BusinessDivisions": {
+    "title": "One Group. Multiple Possibilities.",
+    "description": "Exploring opportunities across industries with a shared commitment to meaningful relationships, quality, and forward-thinking enterprise.",
+    "garments": {
+      "title": "Garments & Apparel Sourcing",
+      "description": "Our garments business focuses on opportunities in apparel sourcing, supplier relationships, and connections across the textile and fashion supply chain."
+    },
+    "travel": {
+      "title": "Travel & Tourism",
+      "description": "Our travel business is being introduced as part of the group's growing portfolio, with a focus on travel-related services and customer connections."
+    },
+    "future": {
+      "title": "More to Come",
+      "description": "Our vision extends beyond individual industries. Additional opportunities and business initiatives may become part of the AL Araf Group journey."
+    }
+  },
+  "Subscribe": {
+    "title": "Something Meaningful Is on the Horizon.",
+    "description": "We're preparing the next chapter of AL Araf Group. Join our waitlist to receive official launch updates.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "you@example.com",
+    "interestLabel": "Primary Business Interest",
+    "options": {
+      "general": "General Updates",
+      "garments": "Garments & Sourcing",
+      "travel": "Travel Services",
+      "other": "Other Business Opportunities"
+    },
+    "button": "Subscribe",
+    "loading": "Subscribing...",
+    "disclaimer": "By subscribing, you agree to our privacy policy and consent to receive marketing communications.",
+    "messages": {
+      "success": "Thank you for subscribing. We will keep you updated.",
+      "error": "Something went wrong. Please try again later.",
+      "inactive": "Registrations are currently paused until our launch systems are fully online.",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidInterest": "Please select a valid interest"
+    }
+  },
+  "Contact": {
+    "title": "Let's Build Meaningful Connections.",
+    "description": "We welcome inquiries from prospective partners, clients, and professionals.",
+    "emailUs": "Email Us",
+    "callUs": "Call Us",
+    "whatsapp": "WhatsApp",
+    "connectHeading": "Connect with us"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "SEO": {
+    "title": "AL Araf Group | Bangladesh Business Group — Coming Soon",
+    "description": "Explore AL Araf Group, a Bangladesh-based business group with interests in apparel sourcing, travel services, and future ventures."
+  }
+}
