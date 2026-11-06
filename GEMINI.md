@@ -147,3 +147,12 @@ All UI development must follow the project's UI architecture, design-system cons
 ## 15. Frontend and UI Logic Architecture
 All UI behavior and state must follow the project's hook-first and context-based architecture skills. Use CSS/Tailwind for style reuse rather than style-only wrapper components. Move interaction logic into custom hooks. Do not use raw `useEffect` in component files. Keep Context providers scoped. Minimize client boundaries and prefer Server Components.
 
+## 16. Git Commit and Staging Suggestions
+Whenever a task creates, modifies, or deletes code/configuration files, the agent MUST automatically provide ready-to-run Git commands from the application root directory at the conclusion of the response:
+1. **Explicit File Staging**: Use `git add <file1> <file2> ...` listing specific modified paths relative to the repository root. Never use `git add .` or blanket flags that could unintentionally stage scratch or untracked artifacts.
+2. **Two-Part Commit Message**: Structure commits with two `-m` parameters:
+   - First `-m`: Concise Conventional Commit title (`type(scope): imperative summary`).
+   - Second `-m`: Multi-line bulleted details outlining specific changes made.
+3. **Reference Skill**: Follow the workflow defined in `.gemini/skills/git-commit-workflow/`.
+
+

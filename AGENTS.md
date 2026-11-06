@@ -16,6 +16,9 @@ Before executing any commands or editing any code, agents MUST:
 1. Read the global guidelines in `GEMINI.md`.
 2. Follow the specialized skills in `.gemini/skills/`.
 
+## Mandatory Behaviors
+- **Suggest Git Staging & Commit Commands**: Always provide exact, copy-pasteable `git add <specific-files>` and two-part Conventional Commit commands (`git commit -m "..." -m "..."`) run from the repository root directory at the conclusion of tasks with code changes.
+
 ## Prohibited Behaviors
 - **Inventing packages or APIs:** Do not hallucinate dependencies or framework features.
 - **Using deprecated APIs:** Refer to the local Next.js documentation when available.
