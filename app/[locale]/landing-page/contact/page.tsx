@@ -1,8 +1,8 @@
 import React from "react";
-import { LandingHeader } from "@/src/components/landing/LandingHeader";
-import { LandingFooter } from "@/src/components/landing/LandingFooter";
 import { setRequestLocale } from "next-intl/server";
 import { 
+  LandingHeader,
+  LandingFooter,
   LandingHero, 
   SectionContainer,
   ContactSection,

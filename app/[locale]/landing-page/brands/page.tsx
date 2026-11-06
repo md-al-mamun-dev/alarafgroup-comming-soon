@@ -1,20 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Briefcase } from "lucide-react";
-import { LandingHeader } from "@/src/components/landing/LandingHeader";
-import { LandingFooter } from "@/src/components/landing/LandingFooter";
+import { Briefcase } from "lucide-react";
 import { siteConfig } from "@/src/config/site";
 import { setRequestLocale } from 'next-intl/server';
 import { 
+  LandingHeader,
+  LandingFooter,
   LandingHero, 
   SectionContainer,
   MediaSlot, 
   HighlightList, 
   CtaBanner,
-  Button,
   Badge,
+  ScrollReveal,
   LumivestPrimaryButton,
   LumivestSecondaryButton,
+  LumivestInteractiveSecondaryButton,
   brandsData
 } from "@/src/design-system";
 
@@ -62,7 +63,7 @@ export default async function BrandsPage(props: { params: Promise<{ locale: stri
         {/* Section 2: Detailed Brand Showcase */}
         <SectionContainer id="brands-showcase" bgColor="white" paddingY="default" hasBorderBottom={false}>
           <div className="space-y-20 lg:space-y-28">
-            {brandsList.map((brand) => {
+            {brandsList.map((brand, idx) => {
               const Icon = brand.icon;
               return (
                 <div 
@@ -72,59 +73,73 @@ export default async function BrandsPage(props: { params: Promise<{ locale: stri
                 >
                   {/* Left Column: Brand Details (Span 6) */}
                   <div className="lg:col-span-6 flex flex-col space-y-6">
-                    <Badge variant="neutral" className="self-start">
-                      {brand.badgeLabel}
-                    </Badge>
+                    <ScrollReveal delay={0}>
+                      <Badge variant="neutral" className="self-start">
+                        {brand.badgeLabel}
+                      </Badge>
+                    </ScrollReveal>
 
-                    <div>
-                      <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-corp-dark tracking-tight mb-2">
-                        {brand.name}
-                      </h2>
-                      <p className="text-sm sm:text-base font-semibold text-corp-muted tracking-wide">
-                        {brand.category}
-                      </p>
-                    </div>
+                    <ScrollReveal delay={100}>
+                      <div>
+                        <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-corp-dark tracking-tight mb-2">
+                          {brand.name}
+                        </h2>
+                        <p className="text-sm sm:text-base font-semibold text-corp-muted tracking-wide">
+                          {brand.category}
+                        </p>
+                      </div>
+                    </ScrollReveal>
 
-                    <div className="space-y-4 text-sm sm:text-base text-corp-gray leading-relaxed">
-                      <p className="font-medium text-corp-dark">
-                        {brand.summary}
-                      </p>
-                      <p>
-                        {brand.description}
-                      </p>
-                    </div>
+                    <ScrollReveal delay={200}>
+                      <div className="space-y-4 text-sm sm:text-base text-corp-gray leading-relaxed">
+                        <p className="font-medium text-corp-dark">
+                          {brand.summary}
+                        </p>
+                        <p>
+                          {brand.description}
+                        </p>
+                      </div>
+                    </ScrollReveal>
 
-                    <HighlightList
-                      title="Core Capabilities & Standards"
-                      items={brand.highlights}
-                      className="pt-2"
-                    />
+                    <ScrollReveal delay={300}>
+                      <HighlightList
+                        title="Core Capabilities & Standards"
+                        items={brand.highlights}
+                        className="pt-2"
+                      />
+                    </ScrollReveal>
 
-                    <div className="pt-2">
-                      <Button
+                    <ScrollReveal delay={400} className="pt-2">
+                      <LumivestInteractiveSecondaryButton
                         href={`/${locale}/landing-page/brands/${brand.slug}`}
-                        variant="secondary"
-                        size="md"
-                        icon={<ArrowRight className="w-4 h-4" />}
+                        surface="light"
+                        variant="slide"
+                        borderStyle="accent"
+                        size="default"
+                        iconCircle={false}
+                        rotate="45"
                       >
                         {brand.ctaText}
-                      </Button>
-                    </div>
+                      </LumivestInteractiveSecondaryButton>
+                    </ScrollReveal>
                   </div>
 
-                  {/* Right Column: Visual Media Slot */}
+                  {/* Right Column: Visual Media Slot with 3D Tilt */}
                   <div className="lg:col-span-6 flex justify-center lg:justify-end">
-                    <MediaSlot
-                      icon={Icon}
-                      badgeText="Portfolio Media Slot"
-                      title={brand.name}
-                      subtitle="584 × 319 Interactive Showcase Frame"
-                      footerSpec="SPEC // 05_OUR_BRANDS"
-                      footerStatus="Verified Unit"
-                      aspectRatio="brand-feature"
-                      imageUrl={brand.imageUrl}
-                      imageAlt={brand.name}
-                    />
+                    <ScrollReveal delay={200} className="w-full max-w-xl">
+                      <MediaSlot
+                        icon={Icon}
+                        badgeText="Portfolio Media Slot"
+                        title={brand.name}
+                        subtitle="584 × 319 Interactive Showcase Frame"
+                        footerSpec="SPEC // 05_OUR_BRANDS"
+                        footerStatus="Verified Unit"
+                        aspectRatio="brand-feature"
+                        imageUrl={brand.imageUrl}
+                        imageAlt={brand.name}
+                        tilt={true}
+                      />
+                    </ScrollReveal>
                   </div>
                 </div>
               );

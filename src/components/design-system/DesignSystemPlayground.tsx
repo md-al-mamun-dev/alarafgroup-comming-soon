@@ -14,7 +14,19 @@ import {
   ChevronDown
 } from "lucide-react";
 import { designTokens } from "@/src/design-system/tokens";
-import { BookCallButton, LumivestSecondaryButton, LumivestCourseCard } from "@/src/design-system";
+import {
+  BookCallButton,
+  LumivestSecondaryButton,
+  LumivestInteractiveSecondaryButton,
+  LumivestCourseCard,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  WhatsAppIcon,
+  type LumivestInteractiveSecondaryVariant,
+  type LumivestInteractiveSecondaryBorderStyle,
+  type LumivestInteractiveSecondarySurface,
+} from "@/src/design-system";
 
 interface ColorItem {
   id: string;
@@ -114,6 +126,12 @@ export function DesignSystemPlayground() {
   const [typography, setTypography] = useState(defaultTypography);
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [activeBorderStyle, setActiveBorderStyle] =
+    useState<LumivestInteractiveSecondaryBorderStyle>("subtle");
+  const [activeVariant, setActiveVariant] =
+    useState<LumivestInteractiveSecondaryVariant>("expand");
+  const [activeSurface, setActiveSurface] =
+    useState<LumivestInteractiveSecondarySurface>("sand");
 
   // Hydrate from localStorage on client mount
   useEffect(() => {
@@ -698,6 +716,371 @@ export function DesignSystemPlayground() {
                   <BookCallButton href="#no-icon" showIcon={false}>
                     Icon-less
                   </BookCallButton>
+                </div>
+              </div>
+
+              {/* Lumivest Interactive Secondary Button Showcase */}
+              <div className="pt-4 border-t border-corp-border/60 mb-6 flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-corp-muted">
+                    Lumivest Interactive Secondary Button Matrix (Border Prominence & Hover Archetypes)
+                  </span>
+                  <p className="text-xs text-corp-muted leading-relaxed">
+                    Configurable border prominence levels (none, subtle, prominent, accent) paired with 6 organic micro-interaction animations.
+                  </p>
+                </div>
+
+                {/* ── Interactive Live Configurator ──────────────────────── */}
+                <div className="p-4 rounded-xl border border-corp-border/70 bg-corp-surface/50 flex flex-col gap-4">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-corp-border/40 pb-3">
+                    <span className="text-xs font-semibold text-corp-text">
+                      Live Component Configurator
+                    </span>
+                    <span className="text-[11px] font-mono text-corp-muted">
+                      surface="{activeSurface}" • borderStyle="{activeBorderStyle}" • variant="{activeVariant}"
+                    </span>
+                  </div>
+
+                  {/* Surface Tone Controls */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] uppercase tracking-wider font-semibold text-corp-muted">
+                      Surface Tone
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {(
+                        [
+                          { id: "sand", label: "Sand Base (#F2F0EA)" },
+                          { id: "light", label: "Luminous Off-White (#FAFAF7)" },
+                        ] as const
+                      ).map((item) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setActiveSurface(item.id)}
+                          className={`px-3 py-1.5 text-xs rounded-full border transition-all cursor-pointer font-medium ${
+                            activeSurface === item.id
+                              ? "bg-corp-primary text-corp-bg border-corp-primary font-semibold shadow-xs"
+                              : "bg-corp-surface text-corp-text border-corp-border hover:border-corp-primary/50"
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Border Style Controls */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] uppercase tracking-wider font-semibold text-corp-muted">
+                      Border Prominence
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {(
+                        [
+                          { id: "none", label: "None (0px)" },
+                          { id: "subtle", label: "Subtle (1px Hairline)" },
+                          { id: "prominent", label: "Prominent (2px Crisp)" },
+                          { id: "accent", label: "Accent (1.5px Gold)" },
+                        ] as const
+                      ).map((item) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setActiveBorderStyle(item.id)}
+                          className={`px-3 py-1.5 text-xs rounded-full border transition-all cursor-pointer font-medium ${
+                            activeBorderStyle === item.id
+                              ? "bg-corp-primary text-corp-bg border-corp-primary font-semibold shadow-xs"
+                              : "bg-corp-surface text-corp-text border-corp-border hover:border-corp-primary/50"
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Animation Archetype Controls */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] uppercase tracking-wider font-semibold text-corp-muted">
+                      Hover Animation Archetype
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {(
+                        [
+                          { id: "expand", label: "Expand Reveal" },
+                          { id: "invert", label: "Invert Charcoal" },
+                          { id: "slide", label: "Slide Forward" },
+                          { id: "outline-fill", label: "Outline to Solid" },
+                          { id: "elevate-shadow", label: "Elevate & Shadow" },
+                          { id: "border-glow", label: "Gold Halo Glow" },
+                        ] as const
+                      ).map((item) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setActiveVariant(item.id)}
+                          className={`px-3 py-1.5 text-xs rounded-full border transition-all cursor-pointer font-medium ${
+                            activeVariant === item.id
+                              ? "bg-corp-primary text-corp-bg border-corp-primary font-semibold shadow-xs"
+                              : "bg-corp-surface text-corp-text border-corp-border hover:border-corp-primary/50"
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Configurator Live Preview */}
+                  <div className="pt-2 flex flex-col items-center sm:items-start gap-2">
+                    <span className="text-[10px] uppercase tracking-wider text-corp-muted font-bold">
+                      Interactive Preview (Hover over button):
+                    </span>
+                    <div className="p-6 rounded-lg bg-corp-bg/50 border border-corp-border/40 w-full flex items-center justify-center sm:justify-start">
+                      <LumivestInteractiveSecondaryButton
+                        surface={activeSurface}
+                        borderStyle={activeBorderStyle}
+                        variant={activeVariant}
+                        href="#interactive-configurator"
+                      >
+                        Configured Button
+                      </LumivestInteractiveSecondaryButton>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── Curated Side-by-Side Archetype Matrix ───────────── */}
+                <div className="flex flex-col gap-3 pt-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-corp-muted">
+                    Curated Archetype Showcase (All 6 Animation Variants)
+                  </span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {/* 1. Expand */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          1. Expand Reveal
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          subtle
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="expand"
+                        borderStyle="subtle"
+                        href="#interactive-expand"
+                      >
+                        Expand Reveal
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Expanding #DBD7CA circle under rotating badge.
+                      </span>
+                    </div>
+
+                    {/* 2. Invert */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          2. Invert Charcoal
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          subtle
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="invert"
+                        borderStyle="subtle"
+                        href="#interactive-invert"
+                      >
+                        Invert Charcoal
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Dark charcoal expander flips text to #FAFAF7.
+                      </span>
+                    </div>
+
+                    {/* 3. Slide */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          3. Slide Forward
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          prominent
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="slide"
+                        borderStyle="prominent"
+                        href="#interactive-slide"
+                      >
+                        Slide Forward
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Crisp 2px border, warm wash, forward arrow translate.
+                      </span>
+                    </div>
+
+                    {/* 4. Outline Fill */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          4. Outline to Solid
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          prominent
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="outline-fill"
+                        borderStyle="prominent"
+                        href="#interactive-outline-fill"
+                      >
+                        Outline to Solid
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Transparent base floods solid charcoal on hover.
+                      </span>
+                    </div>
+
+                    {/* 5. Elevate Shadow */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          5. Elevate & Shadow
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          none
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="elevate-shadow"
+                        borderStyle="none"
+                        href="#interactive-elevate"
+                      >
+                        Elevate & Shadow
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Borderless pill with physical lift and ambient shadow.
+                      </span>
+                    </div>
+
+                    {/* 6. Border Glow */}
+                    <div className="p-4 rounded-xl border border-corp-border/60 bg-corp-surface/30 flex flex-col items-start gap-3">
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-xs font-semibold text-corp-text">
+                          6. Gold Halo Glow
+                        </span>
+                        <span className="text-[10px] font-mono text-corp-muted">
+                          accent
+                        </span>
+                      </div>
+                      <LumivestInteractiveSecondaryButton
+                        variant="border-glow"
+                        borderStyle="accent"
+                        href="#interactive-border-glow"
+                      >
+                        Gold Halo Glow
+                      </LumivestInteractiveSecondaryButton>
+                      <span className="text-[11px] text-corp-muted">
+                        Signature gold border blooms with radiant ambient halo.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sizing & Custom Controls */}
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <LumivestInteractiveSecondaryButton
+                    variant="expand"
+                    borderStyle="accent"
+                    size="md"
+                    href="#interactive-md"
+                  >
+                    Medium Gold Border
+                  </LumivestInteractiveSecondaryButton>
+                  <LumivestInteractiveSecondaryButton
+                    variant="slide"
+                    borderStyle="prominent"
+                    icon={ArrowRight}
+                    rotate="90"
+                    href="#interactive-rotate"
+                  >
+                    Prominent + 90° Rotate
+                  </LumivestInteractiveSecondaryButton>
+                  <LumivestInteractiveSecondaryButton
+                    variant="invert"
+                    borderStyle="none"
+                    showIcon={false}
+                    href="#interactive-no-icon"
+                  >
+                    Borderless Invert Clean
+                  </LumivestInteractiveSecondaryButton>
+                </div>
+
+                {/* Social Button Archetype: Pop & Lift with Invert */}
+                <div className="pt-3 border-t border-corp-border/40 flex flex-col gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-corp-muted">
+                    Social Button Archetype (Light Surface + Prominent Border + Springy Pop & Lift)
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+                    <LumivestInteractiveSecondaryButton
+                      href="#social-facebook"
+                      surface="light"
+                      borderStyle="prominent"
+                      variant="outline-fill"
+                      size="md"
+                      iconCircle={false}
+                      iconAnimation="pop"
+                      social="facebook"
+                      className="w-full !h-11 !py-0 !px-3 justify-center shadow-xs"
+                      labelClassName="text-xs font-semibold"
+                    >
+                      Facebook
+                    </LumivestInteractiveSecondaryButton>
+                    <LumivestInteractiveSecondaryButton
+                      href="#social-instagram"
+                      surface="light"
+                      borderStyle="prominent"
+                      variant="outline-fill"
+                      size="md"
+                      iconCircle={false}
+                      iconAnimation="pop"
+                      social="instagram"
+                      className="w-full !h-11 !py-0 !px-3 justify-center shadow-xs"
+                      labelClassName="text-xs font-semibold"
+                    >
+                      Instagram
+                    </LumivestInteractiveSecondaryButton>
+                    <LumivestInteractiveSecondaryButton
+                      href="#social-linkedin"
+                      surface="light"
+                      borderStyle="prominent"
+                      variant="outline-fill"
+                      size="md"
+                      iconCircle={false}
+                      iconAnimation="pop"
+                      social="linkedin"
+                      className="w-full !h-11 !py-0 !px-3 justify-center shadow-xs"
+                      labelClassName="text-xs font-semibold"
+                    >
+                      LinkedIn
+                    </LumivestInteractiveSecondaryButton>
+                    <LumivestInteractiveSecondaryButton
+                      href="#social-whatsapp"
+                      surface="light"
+                      borderStyle="prominent"
+                      variant="outline-fill"
+                      size="md"
+                      iconCircle={false}
+                      iconAnimation="pop"
+                      social="whatsapp"
+                      className="w-full !h-11 !py-0 !px-3 justify-center shadow-xs"
+                      labelClassName="text-xs font-semibold"
+                    >
+                      WhatsApp
+                    </LumivestInteractiveSecondaryButton>
+                  </div>
                 </div>
               </div>
 

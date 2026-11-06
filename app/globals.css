@@ -96,6 +96,83 @@ body {
   .animate-fade-in {
     animation: fadeIn 1.2s ease-out forwards;
   }
+
+  .animate-hero-fade-in-up {
+    animation: heroFadeInUp 0.95s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+
+  .animate-ambient-float {
+    animation: ambientFloat 6.5s ease-in-out infinite;
+  }
+
+  .animation-delay-0 {
+    animation-delay: 0ms;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-450 {
+    animation-delay: 450ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroImageSettle {
+  from {
+    opacity: 0.88;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+}
+
+@keyframes ambientFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes fadeInUp {

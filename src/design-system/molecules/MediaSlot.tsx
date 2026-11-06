@@ -1,5 +1,6 @@
 import React from "react";
 import { LucideIcon } from "lucide-react";
+import { PerspectiveCard } from "./PerspectiveCard";
 
 export interface MediaSlotProps {
   icon?: LucideIcon | React.ComponentType<{ className?: string }>;
@@ -12,6 +13,7 @@ export interface MediaSlotProps {
   variant?: "gray" | "ivory" | "dark";
   imageUrl?: string;
   imageAlt?: string;
+  tilt?: boolean;
   className?: string;
 }
 
@@ -26,6 +28,7 @@ export function MediaSlot({
   variant = "gray",
   imageUrl,
   imageAlt = "Visual representation",
+  tilt = false,
   className = "",
 }: MediaSlotProps) {
   const aspectClass = {
@@ -44,11 +47,11 @@ export function MediaSlot({
 
   const hasImage = Boolean(imageUrl);
 
-  return (
+  const cardContent = (
     <div
       className={`w-full max-w-xl ${aspectClass} rounded-2xl ${
         hasImage ? "border border-corp-border/80 bg-stone-900" : `${variantClass} border`
-      } p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden shadow-xs group ${className}`}
+      } p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden shadow-xs group [transform-style:preserve-3d] ${className}`}
     >
       {/* Background: Either real image with gradient scrim OR geometric pattern */}
       {hasImage ? (
@@ -67,7 +70,7 @@ export function MediaSlot({
       )}
 
       {/* Top Header */}
-      <div className="relative z-10 flex items-center justify-between">
+      <div className="relative z-10 flex items-center justify-between [transform:translateZ(16px)]">
         {Icon && (
           <div
             className={`w-11 h-11 rounded-xl ${
@@ -94,7 +97,7 @@ export function MediaSlot({
 
       {/* Center content */}
       {(title || subtitle) && (
-        <div className="relative z-10 my-auto text-center py-3">
+        <div className="relative z-10 my-auto text-center py-3 [transform:translateZ(12px)]">
           {title && (
             <span
               className={`font-heading text-lg sm:text-xl font-bold ${
@@ -119,7 +122,7 @@ export function MediaSlot({
       {/* Bottom Footer info */}
       {(footerSpec || footerStatus) && (
         <div
-          className={`relative z-10 flex items-center justify-between text-xs ${
+          className={`relative z-10 flex items-center justify-between text-xs [transform:translateZ(10px)] ${
             hasImage
               ? "text-stone-300 border-t border-white/20"
               : "text-corp-muted border-t border-corp-border/80"
@@ -141,4 +144,10 @@ export function MediaSlot({
       )}
     </div>
   );
+
+  if (tilt) {
+    return <PerspectiveCard maxTilt={5} className="w-full max-w-xl">{cardContent}</PerspectiveCard>;
+  }
+
+  return cardContent;
 }

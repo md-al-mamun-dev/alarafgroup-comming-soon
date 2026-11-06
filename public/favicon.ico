@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#12332C"/>
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="#C5A46D" stroke-opacity="0.5" stroke-width="1"/>
+  <!-- Minimal Monogram A -->
+  <path d="M16 6L7 24H10.5L12.5 18H19.5L21.5 24H25L16 6Z" fill="none" stroke="#C5A46D" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M13.5 14H18.5" stroke="#C5A46D" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

@@ -14,7 +14,7 @@ export function FormInput({ label, required, className = "", ...props }: FormInp
       </label>
       <input
         required={required}
-        className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark placeholder-corp-muted bg-white focus:outline-none focus:ring-2 focus:ring-corp-dark focus:border-transparent transition-all ${className}`}
+        className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark placeholder-corp-muted bg-white focus:outline-none focus:border-[#8C7B5E] focus:ring-1 focus:ring-[#8C7B5E]/30 focus:shadow-[0_2px_8px_rgba(140,123,94,0.08)] hover:border-corp-muted/60 transition-all duration-200 ${className}`}
         {...props}
       />
     </div>
@@ -44,7 +44,7 @@ export function FormSelect({
       <div className="relative">
         <select
           required={required}
-          className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark bg-white appearance-none focus:outline-none focus:ring-2 focus:ring-corp-dark focus:border-transparent transition-all pr-10 cursor-pointer ${className}`}
+          className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark bg-white appearance-none focus:outline-none focus:border-[#8C7B5E] focus:ring-1 focus:ring-[#8C7B5E]/30 focus:shadow-[0_2px_8px_rgba(140,123,94,0.08)] hover:border-corp-muted/60 transition-all duration-200 pr-10 cursor-pointer ${className}`}
           {...props}
         >
           <option value="" disabled>
@@ -82,7 +82,7 @@ export function FormTextarea({
       <textarea
         required={required}
         rows={rows}
-        className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark placeholder-corp-muted bg-white focus:outline-none focus:ring-2 focus:ring-corp-dark focus:border-transparent transition-all resize-none ${className}`}
+        className={`w-full px-4 py-3 rounded-[7px] border border-corp-border text-sm text-corp-dark placeholder-corp-muted bg-white focus:outline-none focus:border-[#8C7B5E] focus:ring-1 focus:ring-[#8C7B5E]/30 focus:shadow-[0_2px_8px_rgba(140,123,94,0.08)] hover:border-corp-muted/60 transition-all duration-200 resize-none ${className}`}
         {...props}
       />
     </div>

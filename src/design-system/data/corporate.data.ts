@@ -84,34 +84,34 @@ export const corporateData = {
 
   officeDetails: [
     {
-      icon: MapPin,
+      icon: "map-pin",
       label: "Head Office",
       value: "House 00, Road 00, Gulshan / Banani, Dhaka, Bangladesh",
     },
     {
-      icon: Phone,
+      icon: "phone",
       label: "Phone",
       value: "+880 1700-000000",
       href: "tel:+8801700000000",
     },
     {
-      icon: Mail,
+      icon: "mail",
       label: "Email",
       value: siteConfig.contact.email,
       href: `mailto:${siteConfig.contact.email}`,
     },
     {
-      icon: Clock,
+      icon: "clock",
       label: "Business Hours",
       value: "Sunday – Thursday: 9:00 AM – 6:00 PM (GMT+6)",
     },
   ] as ContactInfoItem[],
 
   socialLinks: [
-    { name: "Facebook", href: "https://facebook.com", icon: ExternalLink },
-    { name: "Instagram", href: "https://instagram.com", icon: ExternalLink },
-    { name: "LinkedIn", href: "https://linkedin.com", icon: ExternalLink },
-    { name: "WhatsApp", href: "https://wa.me/", icon: MessageCircle },
+    { name: "Facebook", href: "https://facebook.com" },
+    { name: "Instagram", href: "https://instagram.com" },
+    { name: "LinkedIn", href: "https://linkedin.com" },
+    { name: "WhatsApp", href: "https://wa.me/" },
   ] as SocialLinkItem[],
 };
 

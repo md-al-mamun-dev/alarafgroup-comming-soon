@@ -1,4 +1,5 @@
 import React from "react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export interface StatItem {
   value: string;
@@ -22,7 +23,11 @@ export function StatsBar({ stats, bgColor = "white", className = "" }: StatsBarP
           className={`grid grid-cols-1 md:grid-cols-${stats.length} gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-corp-border`}
         >
           {stats.map((stat, idx) => (
-            <div key={idx} className="pt-6 md:pt-0 px-4 first:pl-0 last:pr-0">
+            <ScrollReveal
+              key={idx}
+              delay={idx * 150}
+              className="pt-6 md:pt-0 px-4 first:pl-0 last:pr-0"
+            >
               <div className="font-heading text-4xl sm:text-5xl font-extrabold text-corp-dark tracking-tight mb-2">
                 {stat.value}
               </div>
@@ -34,7 +39,7 @@ export function StatsBar({ stats, bgColor = "white", className = "" }: StatsBarP
                   {stat.description}
                 </p>
               )}
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

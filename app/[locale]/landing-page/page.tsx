@@ -1,10 +1,10 @@
 import React from "react";
 import { Shield } from "lucide-react";
-import { LandingHeader } from "@/src/components/landing/LandingHeader";
-import { LandingFooter } from "@/src/components/landing/LandingFooter";
 import { siteConfig } from "@/src/config/site";
 import { setRequestLocale } from 'next-intl/server';
 import { 
+  LandingHeader,
+  LandingFooter,
   LandingHero, 
   SectionContainer,
   SectionHeader, 
@@ -12,6 +12,8 @@ import {
   ValuesGrid,
   StatsBar, 
   CtaBanner,
+  ScrollReveal,
+  BrandsFocalGrid,
   LumivestPrimaryButton,
   LumivestSecondaryButton,
   corporateData 
@@ -50,62 +52,76 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
         {/* 3. Who We Are Section (Reference: 03_landing_main.svg - y=560-897, bg #F3F4F6) */}
         <SectionContainer id="about" bgColor="light">
           <div className="max-w-3xl">
-            <SectionHeader
-              eyebrow="Overview"
-              title="Who We Are"
-              className="mb-6"
-            />
-            <p className="text-base sm:text-lg text-corp-gray leading-relaxed mb-6">
-              AL Araf Group is a progressive Bangladeshi conglomerate built on foundational values of integrity, quality, and mutual partnership. Through our dedicated operating divisions, we connect local excellence with international markets.
-            </p>
-            <p className="text-base sm:text-lg text-corp-gray leading-relaxed">
-              Our collaborative framework empowers each individual business vertical to maintain agile leadership while drawing on the financial strength, compliance rigor, and vision of the entire group.
-            </p>
+            <ScrollReveal delay={0}>
+              <SectionHeader
+                eyebrow="Overview"
+                title="Who We Are"
+                className="mb-6"
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              <p className="text-base sm:text-lg text-corp-gray leading-relaxed mb-6">
+                AL Araf Group is a progressive Bangladeshi conglomerate built on foundational values of integrity, quality, and mutual partnership. Through our dedicated operating divisions, we connect local excellence with international markets.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={300}>
+              <p className="text-base sm:text-lg text-corp-gray leading-relaxed">
+                Our collaborative framework empowers each individual business vertical to maintain agile leadership while drawing on the financial strength, compliance rigor, and vision of the entire group.
+              </p>
+            </ScrollReveal>
           </div>
         </SectionContainer>
 
         {/* 4. Our Brands Section (Reference: 03_landing_main.svg - y=897-1617, 3 Cards) */}
         <SectionContainer id="brands" bgColor="white">
-          <SectionHeader
-            eyebrow="Business Units"
-            title="Our Brands"
-            description="Diversified operations delivering reliable service and long-term value creation."
-            align="center"
-            className="mb-16"
-          />
-
-          {/* 3 Brand Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <LumivestCourseCard
-              category="Fashion Division"
-              title="Al-Araf Fashion"
-              imageUrl="/images/landing/brand-fashion.jpg"
-              imageAlt="Al-Araf Fashion Division apparel sourcing and textile workshop"
-              details={["Apparel Sourcing", "RMG Export", "Quality Assurance"]}
-              buttonText="View Brand Details"
-              href={`/${locale}/landing-page/brands/fashion`}
+          <ScrollReveal delay={0}>
+            <SectionHeader
+              eyebrow="Business Units"
+              title="Our Brands"
+              description="Diversified operations delivering reliable service and long-term value creation."
+              align="center"
+              className="mb-16"
             />
+          </ScrollReveal>
 
-            <LumivestCourseCard
-              category="Travel Division"
-              title="Artful Travel International"
-              imageUrl="/images/landing/brand-travel.jpg"
-              imageAlt="Artful Travel International flight and corporate travel management"
-              details={["Corporate Travel", "Bespoke Tours", "Visa & Ticketing"]}
-              buttonText="View Brand Details"
-              href={`/${locale}/landing-page/brands/artful-travel`}
-            />
+          {/* 3 Brand Cards Grid with 3D Perspective & Sibling Focal Shift */}
+          <BrandsFocalGrid>
+            <ScrollReveal delay={100}>
+              <LumivestCourseCard
+                category="Fashion Division"
+                title="Al-Araf Fashion"
+                imageUrl="/images/landing/brand-fashion.jpg"
+                imageAlt="Al-Araf Fashion Division apparel sourcing and textile workshop"
+                details={["Apparel Sourcing", "RMG Export", "Quality Assurance"]}
+                buttonText="View Details"
+                href={`/${locale}/landing-page/brands/fashion`}
+              />
+            </ScrollReveal>
 
-            <LumivestCourseCard
-              category="Agro Division"
-              title="Al-Araf Agro"
-              imageUrl="/images/landing/brand-agro.jpg"
-              imageAlt="Al-Araf Agro sustainable agriculture, crop harvest, and food commodities"
-              details={["Sustainable Agronomy", "Cold Chain Logistics", "Bulk Commodities"]}
-              buttonText="View Brand Details"
-              href={`/${locale}/landing-page/brands/agro`}
-            />
-          </div>
+            <ScrollReveal delay={250}>
+              <LumivestCourseCard
+                category="Travel Division"
+                title="Artful Travel International"
+                imageUrl="/images/landing/brand-travel.jpg"
+                imageAlt="Artful Travel International flight and corporate travel management"
+                details={["Corporate Travel", "Bespoke Tours", "Visa & Ticketing"]}
+                buttonText="View Details"
+                href={`/${locale}/landing-page/brands/artful-travel`}
+              />
+            </ScrollReveal>
+
+            <ScrollReveal delay={400}>
+              <LumivestCourseCard
+                category="Agro Division"
+                title="Al-Araf Agro"
+                imageUrl="/images/landing/brand-agro.jpg"
+                imageAlt="Al-Araf Agro sustainable agriculture, crop harvest, and food commodities"
+                details={["Sustainable Agronomy", "Cold Chain Logistics", "Bulk Commodities"]}
+                buttonText="View Details"
+                href={`/${locale}/landing-page/brands/agro`}
+              />
+            </ScrollReveal>
+          </BrandsFocalGrid>
         </SectionContainer>
 
         {/* 5. Why Choose Us / Value Pillars (Reference: 03_landing_main.svg - y=1617-2019, bg #F3F4F6) */}

@@ -42,13 +42,13 @@ export function LumivestCourseCard({
 }: LumivestCourseCardProps) {
   return (
     <div
-      className={`group relative flex flex-col gap-4 p-4 rounded-[16px] bg-[#F2F0EA] border border-transparent hover:border-[#E2DED2] transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer select-none overflow-hidden max-w-[556px] w-full ${className}`.trim()}
+      className={`group relative flex flex-col gap-4 p-4 rounded-[16px] bg-[#F2F0EA] border border-transparent hover:border-[#E2DED2] transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer select-none overflow-hidden max-w-[556px] w-full [transform-style:preserve-3d] ${className}`.trim()}
     >
       {/* ── Top Media Container ───────────────────────────────── */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-[16px] overflow-hidden bg-stone-200">
+      <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-[16px] overflow-hidden bg-stone-200 [transform-style:preserve-3d]">
         {/* Category Pill Tag */}
         {category && (
-          <div className="absolute top-[18px] left-[16px] z-10 px-4 py-2 rounded-[8px] bg-[#F2F0EA] text-[#1C1C1A] font-['General_Sans',sans-serif] text-[13px] font-semibold tracking-wide shadow-xs">
+          <div className="absolute top-[18px] left-[16px] z-10 px-4 py-2 rounded-[8px] bg-[#F2F0EA] text-[#1C1C1A] font-['General_Sans',sans-serif] text-[13px] font-semibold tracking-wide shadow-xs [transform:translateZ(18px)] transition-transform duration-300">
             {category}
           </div>
         )}
@@ -67,7 +67,7 @@ export function LumivestCourseCard({
         />
 
         {/* Hover Action Button ("View Details") */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-auto">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-auto [transform:translateZ(20px)]">
           <LumivestSecondaryButton
             href={href}
             variant="light"

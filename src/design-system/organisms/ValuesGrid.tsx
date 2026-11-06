@@ -2,6 +2,7 @@ import React from "react";
 import { LucideIcon } from "lucide-react";
 import { IconFrame } from "../atoms/IconFrame";
 import { SectionHeader } from "../molecules/SectionHeader";
+import { ScrollReveal } from "../molecules/ScrollReveal";
 
 export interface ValuePillarItem {
   id: string;
@@ -40,17 +41,23 @@ export function ValuesGrid({
   return (
     <div className={`w-full ${className}`}>
       {header && (
-        <SectionHeader
-          eyebrow={header.eyebrow}
-          title={header.title}
-          description={header.description}
-          className="mb-16"
-        />
+        <ScrollReveal delay={0}>
+          <SectionHeader
+            eyebrow={header.eyebrow}
+            title={header.title}
+            description={header.description}
+            className="mb-16"
+          />
+        </ScrollReveal>
       )}
 
       <div className={`grid ${colClasses} gap-8`}>
-        {pillars.map((pillar) => (
-          <div key={pillar.id} className={`flex flex-col space-y-4 ${itemAlignmentClass}`}>
+        {pillars.map((pillar, idx) => (
+          <ScrollReveal
+            key={pillar.id}
+            delay={idx * 150}
+            className={`flex flex-col space-y-4 ${itemAlignmentClass}`}
+          >
             <IconFrame
               icon={pillar.icon}
               shape="circle"
@@ -63,7 +70,7 @@ export function ValuesGrid({
             <p className="text-sm text-corp-gray leading-relaxed">
               {pillar.description}
             </p>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>

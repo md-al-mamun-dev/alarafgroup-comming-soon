@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge } from "../atoms/Badge";
 import { Breadcrumb, BreadcrumbItem } from "../atoms/Breadcrumb";
+import { PerspectiveCard } from "../molecules/PerspectiveCard";
 import { Shield, Building2 } from "lucide-react";
 
 export interface LandingHeroProps {
@@ -49,7 +50,7 @@ export function LandingHero({
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="w-full h-full object-cover object-[center_right] lg:object-[82%_center] opacity-95 transition-transform duration-1000 ease-out"
+          className="w-full h-full object-cover object-[center_right] lg:object-[82%_center] opacity-95 transition-transform duration-1000 ease-out animate-[heroImageSettle_1.8s_cubic-bezier(0.19,1,0.22,1)_both]"
         />
 
         {/* Desktop Gradient Mask: Pure white on left, dissolving smoothly to transparent on right */}
@@ -69,65 +70,73 @@ export function LandingHero({
           
           {/* Left Column: Headline, Copy, CTA Actions */}
           <div className="lg:col-span-7 flex flex-col space-y-6 max-w-2xl">
-            {breadcrumbs && <Breadcrumb items={breadcrumbs} className="mb-1" />}
+            {breadcrumbs && (
+              <div className="animate-hero-fade-in-up animation-delay-0">
+                <Breadcrumb items={breadcrumbs} className="mb-1" />
+              </div>
+            )}
             {badgeLabel && (
-              <Badge variant="white" className="self-start border-corp-border/80 shadow-xs">
-                {badgeLabel}
-              </Badge>
+              <div className="animate-hero-fade-in-up animation-delay-0">
+                <Badge variant="white" className="self-start border-corp-border/80 shadow-xs">
+                  {badgeLabel}
+                </Badge>
+              </div>
             )}
 
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-corp-dark tracking-tight leading-[1.08]">
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-corp-dark tracking-tight leading-[1.08] animate-hero-fade-in-up animation-delay-150">
               {title}
             </h1>
 
             {subtitle && (
-              <p className="text-base sm:text-lg text-corp-gray leading-relaxed font-medium pt-1">
+              <p className="text-base sm:text-lg text-corp-gray leading-relaxed font-medium pt-1 animate-hero-fade-in-up animation-delay-300">
                 {subtitle}
               </p>
             )}
 
             {description && (
-              <p className="text-sm sm:text-base text-corp-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-corp-muted leading-relaxed animate-hero-fade-in-up animation-delay-300">
                 {description}
               </p>
             )}
 
             {actions && (
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              <div className="flex flex-wrap items-center gap-4 pt-3 animate-hero-fade-in-up animation-delay-450">
                 {actions}
               </div>
             )}
           </div>
 
           {/* Right Column: Floating Glassmorphic Stat Card */}
-          <div className="hidden lg:col-span-5 lg:flex justify-end items-center pr-4">
-            <div className="bg-white/90 backdrop-blur-md border border-white/80 p-5 rounded-2xl shadow-xl max-w-sm w-full transition-transform duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-11 h-11 rounded-xl bg-corp-dark text-white flex items-center justify-center shadow-xs shrink-0">
-                  <Icon className="w-5 h-5 stroke-[1.8]" />
+          <div className="hidden lg:col-span-5 lg:flex justify-end items-center pr-4 animate-hero-fade-in-up animation-delay-600">
+            <PerspectiveCard maxTilt={6} className="max-w-sm w-full">
+              <div className="bg-white/90 backdrop-blur-md border border-white/80 p-5 rounded-2xl shadow-xl w-full transition-transform duration-300 hover:-translate-y-1 animate-ambient-float [transform-style:preserve-3d]">
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-11 h-11 rounded-xl bg-corp-dark text-white flex items-center justify-center shadow-xs shrink-0 [transform:translateZ(16px)]">
+                    <Icon className="w-5 h-5 stroke-[1.8]" />
+                  </div>
+                  <div className="[transform:translateZ(10px)]">
+                    <h3 className="text-sm font-bold text-corp-dark leading-tight">
+                      {floatingCard.title}
+                    </h3>
+                    <p className="text-xs text-corp-muted font-medium mt-0.5">
+                      {floatingCard.subtitle}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-corp-dark leading-tight">
-                    {floatingCard.title}
-                  </h3>
-                  <p className="text-xs text-corp-muted font-medium mt-0.5">
-                    {floatingCard.subtitle}
-                  </p>
-                </div>
-              </div>
 
-              {floatingCard.statusText && (
-                <div className="pt-3 border-t border-corp-border/60 flex items-center justify-between text-xs">
-                  <span className="font-bold text-emerald-800 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                    Verified Headquarters
-                  </span>
-                  <span className="text-[11px] text-corp-muted font-mono">
-                    {floatingCard.statusText}
-                  </span>
-                </div>
-              )}
-            </div>
+                {floatingCard.statusText && (
+                  <div className="pt-3 border-t border-corp-border/60 flex items-center justify-between text-xs [transform:translateZ(8px)]">
+                    <span className="font-bold text-emerald-800 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                      Verified Headquarters
+                    </span>
+                    <span className="text-[11px] text-corp-muted font-mono">
+                      {floatingCard.statusText}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </PerspectiveCard>
           </div>
 
         </div>

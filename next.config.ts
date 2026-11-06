@@ -7,7 +7,8 @@ const withNextIntl = createNextIntlPlugin(
 
 const nextConfig: NextConfig = {
   output: "export",
-  trailingSlash: true
+  trailingSlash: true,
+  allowedDevOrigins: ["192.168.0.13", "192.168.0.*", "localhost"],
 };
 
 export default withNextIntl(nextConfig);

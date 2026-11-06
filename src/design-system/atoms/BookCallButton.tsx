@@ -14,13 +14,13 @@ export interface BookCallButtonProps
   rotate?: LumivestButtonRotate;
   showIcon?: boolean;
   iconCircle?: boolean;
-  size?: "default" | "md";
+  size?: "default" | "md" | "sm";
   className?: string;
 }
 
 function renderIcon(
   icon: React.ReactNode | React.ComponentType<{ className?: string }> | undefined,
-  isMd: boolean
+  isSmallOrMd: boolean
 ) {
   if (!icon) {
     return (
@@ -28,7 +28,7 @@ function renderIcon(
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={`w-full h-full ${isMd ? "p-[3px]" : "p-[4px]"}`}
+        className={`w-full h-full ${isSmallOrMd ? "p-[2px]" : "p-[4px]"}`}
       >
         <path
           d="M7 17L17 7M17 7H7M17 7V17"
@@ -49,7 +49,7 @@ function renderIcon(
     const IconComponent = icon as React.ComponentType<{ className?: string }>;
     return (
       <IconComponent
-        className={isMd ? "w-3 h-3 text-[#1C1C1A]" : "w-3.5 h-3.5 text-[#1C1C1A]"}
+        className={isSmallOrMd ? "w-3 h-3 text-[#1C1C1A]" : "w-3.5 h-3.5 text-[#1C1C1A]"}
       />
     );
   }
@@ -90,6 +90,7 @@ export function BookCallButton({
   type = "button",
   ...props
 }: BookCallButtonProps) {
+  const isSm = size === "sm";
   const isMd = size === "md";
 
   const rotationClass = {
@@ -108,7 +109,11 @@ export function BookCallButton({
           className={`pointer-events-none absolute top-1/2 -translate-y-1/2 rounded-full bg-[#8C7B5E] z-0 transition-transform duration-500 ease-[cubic-bezier(0.5,0,0.2,1)] group-hover:scale-[18] motion-reduce:transition-none motion-reduce:transform-none origin-center will-change-transform ${
             iconCircle ? "scale-100" : "scale-0"
           } ${
-            isMd ? "w-[22px] h-[22px] right-6" : "w-6 h-6 right-[34px]"
+            isSm
+              ? "w-5 h-5 right-3.5"
+              : isMd
+              ? "w-[22px] h-[22px] right-6"
+              : "w-6 h-6 right-[34px]"
           }`}
         />
       )}
@@ -116,7 +121,7 @@ export function BookCallButton({
       {/* ── Layer 2: Button Label ────────────────────────────── */}
       <span
         className={`relative z-10 text-[#FAFAF7] font-['General_Sans',sans-serif] font-medium leading-[24px] tracking-normal select-none transform-gpu translate-z-0 backface-hidden antialiased will-change-transform ${
-          isMd ? "text-[16px]" : "text-[20px]"
+          isSm ? "text-[12px] font-medium" : isMd ? "text-[16px]" : "text-[20px]"
         }`}
       >
         {children}
@@ -129,24 +134,28 @@ export function BookCallButton({
           className={`relative z-10 flex items-center justify-center shrink-0 ${
             iconCircle
               ? `rounded-full bg-[#FAFAF7] text-[#1C1C1A] overflow-hidden ${
-                  isMd ? "w-[22px] h-[22px]" : "w-6 h-6"
+                  isSm ? "w-4 h-4" : isMd ? "w-[22px] h-[22px]" : "w-6 h-6"
                 }`
               : `bg-transparent text-[#FAFAF7] ${
-                  isMd ? "w-[22px] h-[22px]" : "w-6 h-6"
+                  isSm ? "w-4 h-4" : isMd ? "w-[22px] h-[22px]" : "w-6 h-6"
                 }`
           }`}
         >
           <span
             className={`w-full h-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.5,0,0.2,1)] ${rotationClass} motion-reduce:transition-none motion-reduce:transform-none origin-center will-change-transform`}
           >
-            {renderIcon(icon, isMd)}
+            {renderIcon(icon, isMd || isSm)}
           </span>
         </span>
       )}
     </>
   );
 
-  const sizeClasses = isMd
+  const sizeClasses = isSm
+    ? showIcon
+      ? "gap-1.5 py-1.5 px-3.5 h-[34px]"
+      : "py-1.5 px-3.5 h-[34px]"
+    : isMd
     ? showIcon
       ? "gap-3 py-3 px-6"
       : "py-3 px-6"
