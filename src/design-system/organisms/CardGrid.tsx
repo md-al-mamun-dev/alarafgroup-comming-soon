@@ -6,6 +6,7 @@ export interface CardGridProps {
   items: ContentCardItem[];
   columns?: 2 | 3 | 4;
   cardVariant?: "white" | "light";
+  cardAlign?: "left" | "center" | "center-justify";
   header?: {
     eyebrow?: string;
     title: string;
@@ -19,6 +20,7 @@ export function CardGrid({
   items,
   columns = 4,
   cardVariant = "white",
+  cardAlign = "left",
   header,
   className = "",
 }: CardGridProps) {
@@ -42,7 +44,7 @@ export function CardGrid({
 
       <div className={`grid ${colClasses} gap-6 sm:gap-8`}>
         {items.map((item) => (
-          <ContentCard key={item.id} item={item} variant={cardVariant} />
+          <ContentCard key={item.id} item={item} variant={cardVariant} align={cardAlign} />
         ))}
       </div>
     </div>

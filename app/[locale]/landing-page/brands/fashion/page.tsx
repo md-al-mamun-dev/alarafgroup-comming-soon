@@ -78,10 +78,12 @@ export default async function FashionDetailPage(props: { params: Promise<{ local
           <CardGrid
             header={{
               title: "What We Offer",
+              align: "center",
             }}
             items={data.offerings}
             columns={4}
             cardVariant="white"
+            cardAlign="center-justify"
           />
         </SectionContainer>
 
@@ -90,10 +92,12 @@ export default async function FashionDetailPage(props: { params: Promise<{ local
           <CardGrid
             header={{
               title: "Why Choose Us",
+              align: "center",
             }}
             items={data.whyChooseUs}
             columns={4}
             cardVariant="white"
+            cardAlign="center-justify"
           />
         </SectionContainer>
 

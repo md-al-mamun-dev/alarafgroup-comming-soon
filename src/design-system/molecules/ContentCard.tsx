@@ -14,7 +14,7 @@ export interface ContentCardItem {
 export interface ContentCardProps {
   item: ContentCardItem;
   variant?: "white" | "light";
-  align?: "left" | "center";
+  align?: "left" | "center" | "center-justify";
   className?: string;
 }
 
@@ -29,11 +29,13 @@ export function ContentCard({
       ? "bg-white border-corp-border hover:border-corp-dark"
       : "bg-corp-light border-corp-border hover:border-corp-dark";
 
-  const alignClass = align === "center" ? "items-center text-center" : "items-start text-left";
+  const isCenterJustify = align === "center-justify";
+  const isCenter = align === "center" || isCenterJustify;
+  const containerAlignClass = isCenter ? "items-center" : "items-start text-left";
 
   return (
     <div
-      className={`p-6 sm:p-7 rounded-xl border ${bgClasses} shadow-xs hover:shadow-md transition-all duration-200 flex flex-col ${alignClass} ${className}`}
+      className={`p-6 sm:p-7 rounded-xl border ${bgClasses} shadow-xs hover:shadow-md transition-all duration-200 flex flex-col ${containerAlignClass} ${className}`}
     >
       {item.icon && (
         <IconFrame
@@ -51,11 +53,23 @@ export function ContentCard({
         </span>
       )}
 
-      <h3 className="font-heading text-lg sm:text-xl font-bold text-corp-dark mb-2">
+      <h3
+        className={`font-heading text-lg sm:text-xl font-bold text-corp-dark mb-2 ${
+          isCenter ? "text-center" : ""
+        }`}
+      >
         {item.title}
       </h3>
 
-      <p className="text-xs sm:text-sm text-corp-gray leading-relaxed flex-1">
+      <p
+        className={`text-xs sm:text-sm text-corp-gray leading-relaxed flex-1 ${
+          isCenterJustify
+            ? "text-justify w-full"
+            : isCenter
+            ? "text-center"
+            : ""
+        }`}
+      >
         {item.description}
       </p>
     </div>

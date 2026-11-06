@@ -78,10 +78,12 @@ export default async function ArtfulTravelDetailPage(props: { params: Promise<{ 
           <CardGrid
             header={{
               title: "Our Services",
+              align: "center",
             }}
             items={data.offerings}
             columns={4}
             cardVariant="white"
+            cardAlign="center-justify"
           />
         </SectionContainer>
 
@@ -100,10 +102,12 @@ export default async function ArtfulTravelDetailPage(props: { params: Promise<{ 
           <CardGrid
             header={{
               title: "Why Choose Us",
+              align: "center",
             }}
             items={data.whyChooseUs}
             columns={4}
             cardVariant="white"
+            cardAlign="center-justify"
           />
         </SectionContainer>
 
