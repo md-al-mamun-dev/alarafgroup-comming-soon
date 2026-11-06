@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowRight, Download } from "lucide-react";
 import { LandingHeader } from "@/src/components/landing/LandingHeader";
 import { LandingFooter } from "@/src/components/landing/LandingFooter";
 import { setRequestLocale } from "next-intl/server";
@@ -11,7 +10,8 @@ import {
   CardGrid,
   GalleryGrid,
   CtaBanner,
-  Button,
+  LumivestPrimaryButton,
+  LumivestSecondaryButton,
   brandsData
 } from "@/src/design-system";
 
@@ -40,14 +40,14 @@ export default async function FashionDetailPage(props: { params: Promise<{ local
           imageUrl={data.imageUrl}
           imageAlt={`${data.name} Apparel Manufacturing & Textile Sourcing`}
           actions={
-            <>
-              <Button href="#contact" variant="primary" size="lg" icon={<ArrowRight className="w-4 h-4" />}>
+            <div className="flex flex-wrap items-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
                 Contact Us
-              </Button>
-              <Button href="#what-we-offer" variant="secondary" size="lg" icon={<Download className="w-4 h-4" />} iconPosition="left">
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="#what-we-offer">
                 Download Profile
-              </Button>
-            </>
+              </LumivestSecondaryButton>
+            </div>
           }
           floatingCard={{
             icon: data.icon,
@@ -115,7 +115,7 @@ export default async function FashionDetailPage(props: { params: Promise<{ local
           description="Connect with our fashion consultants and apparel production team for bulk retail orders, private labeling, or fabric sample viewings."
           primaryCta={{
             label: "Contact Us",
-            href: "#contact",
+            href: `/${locale}/landing-page/contact`,
           }}
           secondaryCta={{
             label: "Download Profile",

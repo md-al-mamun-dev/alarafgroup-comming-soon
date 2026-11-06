@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowRight, Calendar } from "lucide-react";
 import { LandingHeader } from "@/src/components/landing/LandingHeader";
 import { LandingFooter } from "@/src/components/landing/LandingFooter";
 import { setRequestLocale } from "next-intl/server";
@@ -11,7 +10,8 @@ import {
   CardGrid,
   GalleryGrid,
   CtaBanner,
-  Button,
+  LumivestPrimaryButton,
+  LumivestSecondaryButton,
   brandsData
 } from "@/src/design-system";
 
@@ -40,14 +40,14 @@ export default async function AgroDetailPage(props: { params: Promise<{ locale: 
           imageUrl={data.imageUrl}
           imageAlt={`${data.name} Sustainable Agriculture & Food Commodities`}
           actions={
-            <>
-              <Button href="#contact" variant="primary" size="lg" icon={<ArrowRight className="w-4 h-4" />}>
+            <div className="flex flex-wrap items-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
                 Contact Us
-              </Button>
-              <Button href="#what-we-offer" variant="secondary" size="lg" icon={<Calendar className="w-4 h-4" />} iconPosition="left">
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="#what-we-offer">
                 Book A Consultation
-              </Button>
-            </>
+              </LumivestSecondaryButton>
+            </div>
           }
           floatingCard={{
             icon: data.icon,
@@ -115,7 +115,7 @@ export default async function AgroDetailPage(props: { params: Promise<{ locale: 
           description="Connect with our agricultural marketing specialists and farm procurement executives for wholesale bulk supply, contract farming, or commercial partnership inquiries."
           primaryCta={{
             label: "Contact Us",
-            href: "#contact",
+            href: `/${locale}/landing-page/contact`,
           }}
           secondaryCta={{
             label: "Book A Consultation",

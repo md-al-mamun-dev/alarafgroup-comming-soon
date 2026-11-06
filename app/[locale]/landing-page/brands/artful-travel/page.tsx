@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
 import { LandingHeader } from "@/src/components/landing/LandingHeader";
 import { LandingFooter } from "@/src/components/landing/LandingFooter";
 import { setRequestLocale } from "next-intl/server";
@@ -11,7 +10,8 @@ import {
   CardGrid,
   WorkflowGrid,
   CtaBanner,
-  Button,
+  LumivestPrimaryButton,
+  LumivestSecondaryButton,
   brandsData
 } from "@/src/design-system";
 
@@ -40,21 +40,14 @@ export default async function ArtfulTravelDetailPage(props: { params: Promise<{ 
           imageUrl={data.imageUrl}
           imageAlt={`${data.name} Global Mobility & Corporate Travel`}
           actions={
-            <>
-              <Button href="#contact" variant="primary" size="lg" icon={<ArrowRight className="w-4 h-4" />}>
+            <div className="flex flex-wrap items-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
                 Book A Call
-              </Button>
-              <Button
-                href="https://wa.me/"
-                isExternal
-                variant="secondary"
-                size="lg"
-                icon={<MessageCircle className="w-4 h-4" />}
-                iconPosition="left"
-              >
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="https://wa.me/" isExternal>
                 WhatsApp
-              </Button>
-            </>
+              </LumivestSecondaryButton>
+            </div>
           }
           floatingCard={{
             icon: data.icon,
@@ -120,7 +113,7 @@ export default async function ArtfulTravelDetailPage(props: { params: Promise<{ 
           description="Ready to book your flights, plan your holy pilgrimage, or explore customized international travel packages? Connect with our ticketing and concierge specialists today."
           primaryCta={{
             label: "Book A Call",
-            href: "#contact",
+            href: `/${locale}/landing-page/contact`,
           }}
           secondaryCta={{
             label: "WhatsApp Chat",
