@@ -9,6 +9,7 @@ export * from "./atoms/LumivestInteractiveSecondaryButton";
 export * from "./atoms/Badge";
 export * from "./atoms/Breadcrumb";
 export * from "./atoms/IconFrame";
+export * from "./atoms/KaabaIcon";
 export * from "./atoms/FormControls";
 
 // Molecules

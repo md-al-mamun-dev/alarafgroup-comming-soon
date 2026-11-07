@@ -11,7 +11,7 @@ import {
   Headphones, 
   Compass, 
   Luggage, 
-  Ticket, 
+  PlaneTakeoff, 
   Briefcase, 
   DollarSign, 
   Clock, 
@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { ContentCardItem, StepCardItem } from "../molecules/ContentCard";
 import { GalleryItem } from "../organisms/GalleryGrid";
+import { KaabaIcon } from "../atoms/KaabaIcon";
 
 export interface BrandData {
   id: string;
@@ -163,7 +164,7 @@ export const brandsData: Record<string, BrandData> = {
         id: "hajj-umrah",
         title: "Hajj & Umrah",
         description: "Comprehensive religious pilgrimage arrangements featuring premium accommodations near Holy Harams, dedicated ground logistics, and spiritual guidance.",
-        icon: Compass,
+        icon: KaabaIcon,
       },
       {
         id: "tourism",
@@ -175,7 +176,7 @@ export const brandsData: Record<string, BrandData> = {
         id: "air-ticket",
         title: "Air Ticket",
         description: "Instant flight bookings across top domestic and international airlines with optimized routes, flexible reissuance, and competitive fares.",
-        icon: Ticket,
+        icon: PlaneTakeoff,
       },
       {
         id: "work-visa",
