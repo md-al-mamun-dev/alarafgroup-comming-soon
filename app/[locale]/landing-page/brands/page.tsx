@@ -112,6 +112,9 @@ export default async function BrandsPage(props: { params: Promise<{ locale: stri
                     <ScrollReveal delay={400} className="pt-2">
                       <LumivestInteractiveSecondaryButton
                         href={`/${locale}/landing-page/brands/${brand.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ariaLabel={`${brand.ctaText}: ${brand.name} (opens in a new tab)`}
                         surface="light"
                         variant="slide"
                         borderStyle="accent"

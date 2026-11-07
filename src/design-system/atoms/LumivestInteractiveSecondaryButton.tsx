@@ -111,6 +111,9 @@ export interface LumivestInteractiveSecondaryButtonProps
   surface?: LumivestInteractiveSecondarySurface;
   href?: string;
   isExternal?: boolean;
+  target?: string;
+  rel?: string;
+  ariaLabel?: string;
   children?: React.ReactNode;
   icon?: React.ReactNode | React.ComponentType<{ className?: string }>;
   social?: LumivestSocialPlatform;
@@ -228,6 +231,9 @@ export function LumivestInteractiveSecondaryButton({
   surface = "sand",
   href,
   isExternal,
+  target,
+  rel,
+  ariaLabel,
   children = "Explore Courses",
   icon,
   social,
@@ -437,9 +443,15 @@ export function LumivestInteractiveSecondaryButton({
 
   const combinedClasses = `${baseClasses} ${className}`.trim();
 
+  const effectiveTarget = target ?? (isExternal ? "_blank" : undefined);
+  const effectiveRel =
+    rel ??
+    (effectiveTarget === "_blank" ? "noopener noreferrer" : undefined);
+  const effectiveAriaLabel =
+    ariaLabel ?? (props["aria-label"] as string | undefined);
+
   if (href) {
     const isOutbound =
-      isExternal ||
       href.startsWith("http") ||
       href.startsWith("mailto:") ||
       href.startsWith("tel:");
@@ -449,12 +461,9 @@ export function LumivestInteractiveSecondaryButton({
         <a
           href={href}
           className={combinedClasses}
-          target={isExternal || href.startsWith("http") ? "_blank" : undefined}
-          rel={
-            isExternal || href.startsWith("http")
-              ? "noopener noreferrer"
-              : undefined
-          }
+          target={effectiveTarget ?? (href.startsWith("http") ? "_blank" : undefined)}
+          rel={effectiveRel ?? (href.startsWith("http") ? "noopener noreferrer" : undefined)}
+          aria-label={effectiveAriaLabel}
           onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
         >
           {content}
@@ -466,6 +475,9 @@ export function LumivestInteractiveSecondaryButton({
       <Link
         href={href}
         className={combinedClasses}
+        target={effectiveTarget}
+        rel={effectiveRel}
+        aria-label={effectiveAriaLabel}
         onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
       >
         {content}
@@ -478,6 +490,7 @@ export function LumivestInteractiveSecondaryButton({
       type={type}
       className={combinedClasses}
       onClick={onClick}
+      aria-label={effectiveAriaLabel}
       {...props}
     >
       {content}
