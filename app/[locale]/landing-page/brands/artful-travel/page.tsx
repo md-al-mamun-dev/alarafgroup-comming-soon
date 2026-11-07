@@ -115,14 +115,16 @@ export default async function ArtfulTravelDetailPage(props: { params: Promise<{ 
         <CtaBanner
           title="Start Your Journey"
           description="Ready to book your flights, plan your holy pilgrimage, or explore customized international travel packages? Connect with our ticketing and concierge specialists today."
-          primaryCta={{
-            label: "Book A Call",
-            href: `/${locale}/landing-page/contact`,
-          }}
-          secondaryCta={{
-            label: "WhatsApp Chat",
-            href: "https://wa.me/",
-          }}
+          actions={
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
+                Book A Call
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="https://wa.me/" isExternal>
+                WhatsApp Chat
+              </LumivestSecondaryButton>
+            </div>
+          }
           bgColor="light"
         />
       </main>

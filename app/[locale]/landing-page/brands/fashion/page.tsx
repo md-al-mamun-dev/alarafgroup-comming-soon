@@ -117,14 +117,16 @@ export default async function FashionDetailPage(props: { params: Promise<{ local
         <CtaBanner
           title="Find out More"
           description="Connect with our fashion consultants and apparel production team for bulk retail orders, private labeling, or fabric sample viewings."
-          primaryCta={{
-            label: "Contact Us",
-            href: `/${locale}/landing-page/contact`,
-          }}
-          secondaryCta={{
-            label: "Download Profile",
-            href: "#what-we-offer",
-          }}
+          actions={
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
+                Contact Us
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="#what-we-offer">
+                Download Profile
+              </LumivestSecondaryButton>
+            </div>
+          }
           bgColor="light"
         />
       </main>

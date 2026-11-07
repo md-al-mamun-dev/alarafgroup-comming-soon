@@ -117,14 +117,16 @@ export default async function AgroDetailPage(props: { params: Promise<{ locale: 
         <CtaBanner
           title="Work With Us"
           description="Connect with our agricultural marketing specialists and farm procurement executives for wholesale bulk supply, contract farming, or commercial partnership inquiries."
-          primaryCta={{
-            label: "Contact Us",
-            href: `/${locale}/landing-page/contact`,
-          }}
-          secondaryCta={{
-            label: "Book A Consultation",
-            href: "#what-we-offer",
-          }}
+          actions={
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <LumivestPrimaryButton href={`/${locale}/landing-page/contact`}>
+                Contact Us
+              </LumivestPrimaryButton>
+              <LumivestSecondaryButton href="#what-we-offer">
+                Book A Consultation
+              </LumivestSecondaryButton>
+            </div>
+          }
           bgColor="light"
         />
       </main>
