@@ -24,6 +24,10 @@ import {
 import { ContentCardItem, StepCardItem } from "../molecules/ContentCard";
 import { GalleryItem } from "../organisms/GalleryGrid";
 import { KaabaIcon } from "../atoms/KaabaIcon";
+import { SuitTieIcon } from "../atoms/SuitTieIcon";
+import { DressIcon } from "../atoms/DressIcon";
+import { PanjabiIcon } from "../atoms/PanjabiIcon";
+import { SeasonalIcon } from "../atoms/SeasonalIcon";
 
 export interface BrandData {
   id: string;
@@ -78,25 +82,25 @@ export const brandsData: Record<string, BrandData> = {
         id: "mens-wear",
         title: "Men's Wear",
         description: "Explore our comprehensive men's apparel line crafted with premium fabrics, modern tailoring, and exceptional durability.",
-        icon: Shirt,
+        icon: SuitTieIcon,
       },
       {
         id: "womens-wear",
         title: "Women's Wear",
         description: "Contemporary fashion and everyday elegance designed with breathable textiles, refined cuts, and trend-focused patterns.",
-        icon: Sparkles,
+        icon: DressIcon,
       },
       {
         id: "traditional-religious",
         title: "Traditional Religious Wear",
         description: "Authentic panjabis, modest attires, and religious ceremonial garments made from finely woven cottons and exquisite embroideries.",
-        icon: Moon,
+        icon: PanjabiIcon,
       },
       {
         id: "seasonal-collections",
         title: "Seasonal Collections",
         description: "Dynamic winter knitwear, summer linens, festive Eid collections, and weather-adaptive outerwear scaled for high-volume demand.",
-        icon: Sun,
+        icon: SeasonalIcon,
       },
     ],
     whyChooseUs: [

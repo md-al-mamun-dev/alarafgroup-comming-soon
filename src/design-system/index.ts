@@ -10,6 +10,10 @@ export * from "./atoms/Badge";
 export * from "./atoms/Breadcrumb";
 export * from "./atoms/IconFrame";
 export * from "./atoms/KaabaIcon";
+export * from "./atoms/SuitTieIcon";
+export * from "./atoms/DressIcon";
+export * from "./atoms/PanjabiIcon";
+export * from "./atoms/SeasonalIcon";
 export * from "./atoms/FormControls";
 
 // Molecules
