@@ -3,13 +3,15 @@ import { SectionHeader } from "../molecules/SectionHeader";
 
 export interface GalleryItem {
   title: string;
-  tag: string;
+  tag?: string;
   spec?: string;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export interface GalleryGridProps {
   items: GalleryItem[];
-  brandName: string;
+  brandName?: string;
   headerTitle?: string;
   countLabel?: string;
   aspectRatio?: "fashion" | "agro";
@@ -47,29 +49,37 @@ export function GalleryGrid({
         {items.map((item, index) => (
           <div
             key={index}
-            className={`${aspectClass} rounded-xl bg-corp-light border border-corp-border p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden group shadow-xs hover:shadow-md transition-shadow`}
+            className={`${aspectClass} rounded-xl bg-corp-light border border-corp-border p-5 sm:p-6 flex flex-col justify-end relative overflow-hidden group shadow-xs hover:shadow-lg transition-all duration-300`}
           >
-            <div className="absolute inset-0 bg-[radial-gradient(#4b5563_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+            {item.imageUrl ? (
+              <>
+                <img
+                  src={item.imageUrl}
+                  alt={item.imageAlt || item.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+              </>
+            ) : (
+              <div className="absolute inset-0 bg-[radial-gradient(#4b5563_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+            )}
 
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-corp-dark bg-white/90 px-2 py-0.5 rounded border border-corp-border">
-                {item.tag}
+            <div className="relative z-10 transition-transform duration-300 ease-out group-hover:-translate-y-1">
+              <span
+                className={`font-mono text-xs font-semibold tracking-wider block mb-1 ${
+                  item.imageUrl ? "text-white/70" : "text-corp-muted"
+                }`}
+              >
+                0{index + 1}
               </span>
-              <span className="font-mono text-[10px] text-corp-muted">0{index + 1}</span>
-            </div>
-
-            <div className="relative z-10 text-center my-auto">
-              <h4 className="font-heading text-sm sm:text-base font-bold text-corp-dark leading-snug">
+              <h4
+                className={`font-heading text-base sm:text-lg font-bold leading-snug ${
+                  item.imageUrl ? "text-white drop-shadow-sm" : "text-corp-dark"
+                }`}
+              >
                 {item.title}
               </h4>
-              <span className="text-[11px] text-corp-muted block mt-1 font-mono">
-                {aspectRatio === "fashion" ? "281 × 239 Media Frame" : "383 × 239 Media Frame"}
-              </span>
-            </div>
-
-            <div className="relative z-10 flex items-center justify-between text-[10px] text-corp-muted border-t border-corp-border pt-2">
-              <span>{brandName}</span>
-              <span className="font-medium text-corp-dark">Operational</span>
             </div>
           </div>
         ))}
